@@ -41,7 +41,8 @@ public class Task {
         String createdAt = parts[3].split(":")[1].trim();
         String updatedAt = parts[4].split(":")[1].trim();
 
-        Task task = new Task(id, desc);
+        Task task = new Task(desc);
+        task.id = id;
         task.status = status;
         task.createdAt = createdAt;
         task.updatedAt = updatedAt;

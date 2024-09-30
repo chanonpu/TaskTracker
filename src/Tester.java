@@ -1,21 +1,26 @@
-public class Main {
+import java.util.Scanner;
+
+public class Tester {
     public static void main(String[] args) {
-        if (args.length <= 0)
+        Scanner sc = new Scanner(System.in);
+        String[] input = sc.nextLine().split(" ");
+        sc.close();
+        if (input.length <= 0)
             System.out.println("Please provide a command");
         else {
-            String command = args[0];
+            String command = input[0];
             switch (command) {
                 case "add":
-                    if (args.length >= 1)
-                        TaskManager.addTask(args[1]);
+                    if (input.length >= 1)
+                        TaskManager.addTask(input[1]);
                     else
                         System.out.println("Please provide a description");
                     break;
                 case "list":
-                    if (args.length <= 1)
+                    if (input.length <= 1)
                         TaskManager.listTasks();
                     else {
-                        String status = args[1].toUpperCase();
+                        String status = input[1].toUpperCase();
                         switch (status) {
                             case "TODO":
                                 TaskManager.listStatusTask(TaskStatus.TODO);
@@ -34,22 +39,22 @@ public class Main {
                     }
                     break;
                 case "mark-inprogress":
-                    if (args.length <= 1 && isNumeric.checkNumeric(args[1]))
-                        TaskManager.updateTask(Integer.parseInt(args[1]), TaskStatus.IN_PROGRESS);
+                    if (input.length <= 1 && isNumeric.checkNumeric(input[1]))
+                        TaskManager.updateTask(Integer.parseInt(input[1]), TaskStatus.IN_PROGRESS);
                     else
                         System.out.println("Invalid id");
                     break;
 
                 case "mark-done":
-                    if (args.length <= 1 && isNumeric.checkNumeric(args[1]))
-                        TaskManager.updateTask(Integer.parseInt(args[1]), TaskStatus.COMPLETED);
+                    if (input.length <= 1 && isNumeric.checkNumeric(input[1]))
+                        TaskManager.updateTask(Integer.parseInt(input[1]), TaskStatus.COMPLETED);
                     else
                         System.out.println("Invalid id");
                     break;
 
                 case "delete":
-                    if (args.length <= 1 && isNumeric.checkNumeric(args[1]))
-                        TaskManager.deleteTask(Integer.parseInt(args[1]));
+                    if (input.length <= 1 && isNumeric.checkNumeric(input[1]))
+                        TaskManager.deleteTask(Integer.parseInt(input[1]));
                     else
                         System.out.println("Invalid id");
                     break;
