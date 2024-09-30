@@ -6,10 +6,11 @@ public class Task {
     private TaskStatus status;
     private String createdAt;
     private String updatedAt;
+    private static int count;
 
     // constructor
-    public Task(int id, String desc) {
-        this.id = id;
+    public Task(String desc) {
+        this.id = count++;
         this.desc = desc;
         status = TaskStatus.TODO;
         createdAt = LocalDateTime.now().toString();

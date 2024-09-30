@@ -37,10 +37,10 @@ public class TaskManager {
     // add task
     public static void addTask(String description) {
         List<Task> tasks = loadTasks();
-        int id = tasks.size() + 1;
-        tasks.add(new Task(id, description));
+        Task task = new Task(description);
+        tasks.add(task);
         saveTasks(tasks);
-        System.out.println("Task added successfully (ID: " + id + " )");
+        System.out.println("Task added successfully (ID: " + task.getId() + " )");
     }
 
     // update task
@@ -55,6 +55,14 @@ public class TaskManager {
             }
         }
         System.out.println("No task founded");
+    }
+
+    // delete task
+    public static void deleteTask(int id) {
+        List<Task> tasks = loadTasks();
+        tasks.removeIf(task -> task.getId() == id);
+        saveTasks(tasks);
+        System.out.println("Task deleted successfully");
     }
 
     // list all task

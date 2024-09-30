@@ -47,6 +47,13 @@ public class Main {
                         System.out.println("Invalid id");
                     break;
 
+                case "delete":
+                    if (args.length <= 1 && isNumeric.checkNumeric(args[1]))
+                        TaskManager.deleteTask(Integer.parseInt(args[1]));
+                    else
+                        System.out.println("Invalid id");
+                    break;
+                    
                 default:
                     System.out.println("Unknown Command");
                     break;
